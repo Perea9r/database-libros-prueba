@@ -1,6 +1,8 @@
 package com.libros.crud.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -8,9 +10,14 @@ import jakarta.persistence.Table;
 @Table(name = "libro")
 public class Libro {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int isbn;
     private String titulo;
     private String tematica;
+
+    public Libro(){
+        
+    }
 
     public Libro(int isbn, String titulo, String tematica) {
         this.isbn = isbn;

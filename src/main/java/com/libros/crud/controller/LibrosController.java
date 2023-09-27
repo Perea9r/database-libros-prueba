@@ -39,11 +39,9 @@ public class LibrosController {
         service.actualizarLibro(libro);
     }
 
-    @DeleteMapping(value="/libro" , produces = MediaType.APPLICATION_JSON_VALUE)
-    public void eliminarLibro(int isbn){
-        service.eliminarLibro(isbn);
+    @DeleteMapping(value="libro/{isbn}" , produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Libro> eliminar(@PathVariable("isbn") int isbn){
+        return service.eliminarLibro(isbn);
     }
-
-    
 
 }

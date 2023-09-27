@@ -11,13 +11,6 @@ public class LibrosServiceImpl implements LibrosService {
     @Autowired
     LibrosRepository repository;
 
-    public LibrosServiceImpl() {
-        repository.save(new Libro(111, "El imperio final", "Fantasía"));
-        repository.save(new Libro(222, "El señor de los anillos", "Fantasía"));
-        repository.save(new Libro(333, "Harry Potter", "Fantasía"));
-        
-    }
-
     public List<Libro> libros() {
         return repository.findAll();
     }
@@ -38,7 +31,8 @@ public class LibrosServiceImpl implements LibrosService {
     }
 
     @Override
-    public void eliminarLibro(int isbn) {
+    public List<Libro> eliminarLibro(int isbn) {
         repository.deleteById(isbn);
+        return repository.findAll();
     }
 }
