@@ -1,6 +1,8 @@
 package com.libros.crud.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.libros.crud.model.Libro;
@@ -17,7 +19,8 @@ public class LibrosServiceImpl implements LibrosService {
 
     @Override
     public Libro buscarLibro(int isbn) {
-        return repository.existsById(isbn) ? repository.getReferenceById(isbn) : null;
+        Optional<Libro> libro = repository.findById(isbn);
+        return libro.isPresent() ? libro.get() : null;
     }
 
     @Override

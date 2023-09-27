@@ -18,7 +18,7 @@ public class LibrosController {
     
     @Autowired
     LibrosService service;
-    @GetMapping(value="/libro/{isbn})" , produces=MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value="/libro/{isbn}" , produces=MediaType.APPLICATION_JSON_VALUE)
     public Libro buscarLibro(@PathVariable("isbn") int isbn){
         return service.buscarLibro(isbn);
     }
